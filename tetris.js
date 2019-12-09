@@ -2,10 +2,8 @@ let Application = PIXI.Application,
     loader = PIXI.loader,
     resources = PIXI.loader.resources,
     Sprite = PIXI.Sprite;
-
 let app = new Application({width: 420, height: 600});
 document.body.appendChild(app.view);
-
 loader
     .add("assets/black.png")
     .add("assets/dark_blue.png")
@@ -14,6 +12,23 @@ loader
     .load(setup);
 
 let colors;
+let pentomino = new Pentomino("P", 1);
+for (var i = 0; i < pentomino.shape.length; i++) {
+    let x = "";
+    for (var j = 0; j < pentomino.shape[i].length; j++) {
+        x = x + pentomino[i][j] + " ";
+    }
+    console.log(x)
+}
+pentomino.rotate();
+
+for (var i = 0; i < pentomino.shape.length; i++) {
+    let x = "";
+    for (var j = 0; j < pentomino.shape[i].length; j++) {
+        x = x + pentomino[i][j] + " ";
+    }
+    console.log(x)
+}
 
 function setup() {
     colors = [resources["assets/black.png"].texture,
