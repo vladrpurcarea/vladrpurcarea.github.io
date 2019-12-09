@@ -4,7 +4,7 @@ let boardWidth = 5;
 let boardHeight = 15;
 let Application = PIXI.Application,
   loader = PIXI.Loader.shared,
-  resources = PIXI.loader.resources,
+  resources = PIXI.Loader.shared.resources,
   Sprite = PIXI.Sprite;
 
 let app = new Application({ width: appWidth, height: appHeight });
@@ -51,8 +51,10 @@ function setup() {
 
 function gameLoop(delta) {
   ++ticks;
+  let update = false;
   if (ticks == 45) {
     pentomino.y += 1;
+    update = true;
     if (board.collides(pentomino)) {
       board.placePentomino(pentomino);
       pentomino = queuedPentomino;
@@ -66,11 +68,15 @@ function gameLoop(delta) {
     pentomino.x -= 1;
     if (board.collides(pentomino)) {
       pentomino.x += 1;
+    } else {
+      update = true;
     }
   } else if (right.isDown) {
     pentomino.X += 1;
     if (board.collides(pentomino)) {
       pentomino.x -= 1;
+    } else {
+      update = true;
     }
   } else if (up.isDown) {
     pentomino.rotate();
@@ -79,10 +85,14 @@ function gameLoop(delta) {
       pentomino.rotate();
       pentomino.rotate();
       pentomino.rotate();
+    } else {
+      update = true;
     }
   }
 
-  render();
+  if (update) {
+    render();
+  }
 }
 
 function renderBoard() {
@@ -126,5 +136,4 @@ function render() {
   blocks = [];
   renderBoard();
   renderPentomino(pentomino);
-  renderPentomino(queuedPentomino);
 }
