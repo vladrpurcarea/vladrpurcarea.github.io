@@ -5,18 +5,18 @@ let boardHeight = 15;
 let squareSize = 40;
 let tickTime = 45;
 
-let style = new TextStyle({
-  fontSize: 20,
-  fill: "white",
-  fontFamily: "monospace"
-});
-
 let Application = PIXI.Application,
   loader = PIXI.Loader.shared,
   resources = PIXI.Loader.shared.resources,
   Sprite = PIXI.Sprite,
   Text = PIXI.Text,
   TextStyle = PIXI.TextStyle;
+
+let style = new TextStyle({
+  fontSize: 20,
+  fill: "white",
+  fontFamily: "monospace"
+});
 
 let app = new Application({ width: appWidth, height: appHeight });
 document.body.appendChild(app.view);
