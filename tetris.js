@@ -51,7 +51,7 @@ function gameLoop(delta) {
     pentomino.y += 1;
     update = true;
     if (board.collides(pentomino)) {
-      //board.placePentomino(pentomino);
+      board.placePentomino(pentomino);
       pentomino = queuedPentomino;
       queuedPentomino = new Pentomino(pickRandomType(), pickRandomColor());
     }
@@ -116,14 +116,19 @@ document.addEventListener("keydown", function(event) {
     }
   } else if (event.keyCode == 38) {
     pentomino.rotate();
-    if (board.collides(pentomino)) {
-      //hahahahahah
-      pentomino.rotate();
-      pentomino.rotate();
-      pentomino.rotate();
-    } else {
-      update = true;
+    let origX = pentomino.x;
+    while (pentomino.x >= 0) {
+      if (!board.collides(pentomino)) {
+        update = true;
+        return;
+      }
+      pentomino.x -= 1;
     }
+    pentomino.x = origX;
+    //jahaahaha
+    pentomino.rotate();
+    pentomino.rotate();
+    pentomino.rotate();
   } else if (event.keyCode == 39) {
     pentomino.x += 1;
     if (board.collides(pentomino)) {
