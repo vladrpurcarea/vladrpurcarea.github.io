@@ -30,15 +30,6 @@ loader
   .add("assets/white.png")
   .load(setup);
 
-function resize() {
-  renderer.view.style.position = "absolute";
-  renderer.view.style.left = ((window.innerWidth - renderer.width) >> 1) + "px";
-  renderer.view.style.top =
-    ((window.innerHeight - renderer.height) >> 1) + "px";
-}
-resize();
-window.addEventListener("resize", resize);
-
 let colors;
 let board;
 let ticks;
