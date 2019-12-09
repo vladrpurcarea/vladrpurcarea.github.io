@@ -1,5 +1,3 @@
-var keyboard = require('keyboard').keyboard;
-
 let Application = PIXI.Application,
     loader = PIXI.loader,
     resources = PIXI.loader.resources,

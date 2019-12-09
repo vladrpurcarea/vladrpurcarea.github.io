@@ -1,4 +1,4 @@
-export function keyboard(value) {
+function keyboard(value) {
   let key = {};
   key.value = value;
   key.isDown = false;
