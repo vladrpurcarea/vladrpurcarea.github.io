@@ -61,7 +61,7 @@ class Board {
 
     linesToClear.sort();
     for (let i = 0; i < linesToClear.length; i++) {
-        this.deleteLine(i);
+        this.deleteLine(linesToClear[i]);
     }
 
     return linesToClear.length;
