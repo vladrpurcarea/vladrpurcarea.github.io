@@ -13,8 +13,18 @@ loader
     .add("assets/white.png")
     .load(setup);
 
+let colors;
+
 function setup() {
-    let white = new Sprite(resources["assets/black.png"].texture);
-    app.stage.addChild(white)
+    let colors = [new Sprite(resources["assets/black.png"].texture,
+                  new Sprite(resources["assets/dark_blue.png"].texture,
+                  new Sprite(resources["assets/real_black.png"].texture,
+                  new Sprite(resources["assets/white.png"].texture];
+    
+    app.ticker.add(delta => gameLoop(delta));
+    app.stage.addChild(colors[0])
 }
 
+function gameLoop(delta) {
+    // do nothing
+    colors[0].x += 1;
