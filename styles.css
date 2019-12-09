@@ -2,16 +2,12 @@ body {
   background-color: black;
 }
 
-#inner {
-    display: table;
-    margin: 0 auto;
-    border: 1px solid black;
-  }
-  
-  #outer {
-    width:100%
-  }
+canvas {
+  display: table;
+  margin: 0 auto;
+  border: 1px solid black;
+}
 
-  h3 {
-      color: white;
-  }
+h3 {
+  color: white;
+}
