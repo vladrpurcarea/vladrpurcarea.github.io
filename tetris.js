@@ -125,9 +125,9 @@ document.addEventListener("keydown", function(event) {
       update = true;
     }
   } else if (event.keyCode == 39) {
-    pentomino.x -= 1;
+    pentomino.x += 1;
     if (board.collides(pentomino)) {
-      pentomino.x += 1;
+      pentomino.x -= 1;
     } else {
       update = true;
     }
