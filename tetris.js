@@ -95,7 +95,7 @@ function render() {
     blocks = [];
     for (let i = 0; i < b.length; i++) {
         for (let j = 0; j < b[i].length; j++) {
-            if (board[i][j] != 0) {
+            if (b[i][j] != 0) {
                 let block = new Sprite(colors[b[i][j]]);
                 block.width = 33;
                 block.height = 33;
