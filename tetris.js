@@ -1,4 +1,4 @@
-let appWidth = 420;
+let appWidth = 500;
 let appHeight = 600;
 let boardWidth = 5;
 let boardHeight = 15;
