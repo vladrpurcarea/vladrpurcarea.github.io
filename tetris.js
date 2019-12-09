@@ -1,3 +1,5 @@
+import {keyboard} from 'keyboard'
+
 let Application = PIXI.Application,
     loader = PIXI.loader,
     resources = PIXI.loader.resources,
@@ -28,3 +30,4 @@ function setup() {
 function gameLoop(delta) {
     // do nothing
     colors[0].x += 1;
+}
