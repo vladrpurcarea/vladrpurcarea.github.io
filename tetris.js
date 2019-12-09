@@ -16,7 +16,7 @@ let pentomino = new Pentomino("P", 1);
 for (var i = 0; i < pentomino.shape.length; i++) {
     let x = "";
     for (var j = 0; j < pentomino.shape[i].length; j++) {
-        x = x + pentomino[i][j] + " ";
+        x = x + pentomino.shape[i][j] + " ";
     }
     console.log(x)
 }
@@ -25,7 +25,7 @@ pentomino.rotate();
 for (var i = 0; i < pentomino.shape.length; i++) {
     let x = "";
     for (var j = 0; j < pentomino.shape[i].length; j++) {
-        x = x + pentomino[i][j] + " ";
+        x = x + pentomino.shape[i][j] + " ";
     }
     console.log(x)
 }
