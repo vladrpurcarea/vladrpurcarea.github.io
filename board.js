@@ -3,7 +3,7 @@ class Board {
     this.board = [];
     this.h = h;
     this.w = w;
-    clearBoard();
+    this.clearBoard();
   }
 
   clearBoard() {
