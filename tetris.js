@@ -4,10 +4,18 @@ let boardWidth = 5;
 let boardHeight = 15;
 let squareSize = 40;
 let tickTime = 45;
+
+let style = new TextStyle({
+  fontSize: 20,
+  fill: "white",
+  fontFamily: "monospace"
+});
+
 let Application = PIXI.Application,
   loader = PIXI.Loader.shared,
   resources = PIXI.Loader.shared.resources,
-  Sprite = PIXI.Sprite;
+  Sprite = PIXI.Sprite,
+  Text = PIXI.Text;
 
 let app = new Application({ width: appWidth, height: appHeight });
 document.body.appendChild(app.view);
@@ -25,6 +33,8 @@ let left, up, right, down;
 let pentomino, queuedPentomino;
 let blocks;
 let update;
+let score;
+let scoreText;
 
 function setup() {
   // set up blocks
@@ -37,6 +47,8 @@ function setup() {
 
   blocks = [];
 
+  score = 0;
+
   //pentominos and board
   pentomino = new Pentomino(pickRandomType(), pickRandomColor());
   queuedPentomino = new Pentomino(pickRandomType(), pickRandomColor());
@@ -44,18 +56,24 @@ function setup() {
   queuedPentomino.y = 1;
   board = new Board(boardHeight, boardWidth);
 
+  scoreText = new Text(score, style);
+  app.stage.addChild(scoreText);
+  scoreText.position.set(300, 420);
+
   ticks = 0;
   app.ticker.add(delta => gameLoop(delta));
 }
 
 function gameLoop(delta) {
   ++ticks;
-  if (ticks == 45) {
+  if (ticks == tickTime) {
     pentomino.y += 1;
     update = true;
     if (board.collides(pentomino)) {
       pentomino.y -= 1;
       board.placePentomino(pentomino);
+      score += board.clearLines();
+      scoreText.text = score;
       pentomino = queuedPentomino;
       pentomino.x = 0;
       pentomino.y = 0;

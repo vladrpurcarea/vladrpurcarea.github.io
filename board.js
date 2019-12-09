@@ -43,4 +43,30 @@ class Board {
     }
     return false;
   }
+
+  clearLines() {
+    let linesToClear = [];
+    for (let i = 0; i < this.board; i++) {
+      let full = true;
+      for (let j = 0; j < this.board[i]; j++) {
+        if (this.board[i][j] == 0) {
+          full = false;
+          break;
+        }
+      }
+      if (full) {
+        linesToClear.push(i);
+      }
+    }
+
+    linesToClear.forEach(function(l) {
+        for (let i = l; i > 0; i--) {
+            for (let j = 0; j < this.board[i].length; j++) {
+                this.board[i][j] = this.board[i-1][j];
+            }
+        }
+    });
+
+    return linesToClear.length;
+  }
 }
