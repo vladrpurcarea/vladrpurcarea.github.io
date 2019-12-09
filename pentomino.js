@@ -13,7 +13,7 @@ types["F"] = [
 ];
 
 function pickRandomType() {
-  let keys = types.keys();
+  let keys = Object.keys(types);
   return keys[Math.floor(Math.random() * keys.length)];
 }
 

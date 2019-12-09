@@ -86,6 +86,7 @@ function gameLoop(delta) {
 }
 
 function render() {
+    board[2][2] = 1;
     for (let i = 0; i < blocks.length; i++) {
         blocks[i].visible = false;
         app.stage.removeChild(blocks[i]);
