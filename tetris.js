@@ -3,6 +3,7 @@ let appHeight = 600;
 let boardWidth = 5;
 let boardHeight = 15;
 let squareSize = 40;
+let tickTime = 45;
 let Application = PIXI.Application,
   loader = PIXI.Loader.shared,
   resources = PIXI.Loader.shared.resources,
@@ -39,6 +40,8 @@ function setup() {
   //pentominos and board
   pentomino = new Pentomino(pickRandomType(), pickRandomColor());
   queuedPentomino = new Pentomino(pickRandomType(), pickRandomColor());
+  queuedPentomino.x = 7;
+  queuedPentomino.y = 1;
   board = new Board(boardHeight, boardWidth);
 
   ticks = 0;
@@ -54,7 +57,11 @@ function gameLoop(delta) {
       pentomino.y -= 1;
       board.placePentomino(pentomino);
       pentomino = queuedPentomino;
+      pentomino.x = 0;
+      pentomino.y = 0;
       queuedPentomino = new Pentomino(pickRandomType(), pickRandomColor());
+      queuedPentomino.x = 7;
+      queuedPentomino.y = 1;
     }
   } else if (ticks == 60) {
     ticks = 0;
@@ -105,6 +112,7 @@ function render() {
   blocks = [];
   renderBoard();
   renderPentomino(pentomino);
+  renderPentomino(queuedPentomino);
 }
 
 document.addEventListener("keydown", function(event) {
@@ -137,5 +145,13 @@ document.addEventListener("keydown", function(event) {
     } else {
       update = true;
     }
+  } else if (event.keyCode == 40) {
+    tickTime = 15;
+  }
+});
+
+document.addEventListener("keyup", function(event) {
+  if (event.keyCode == 40) {
+    tickTime = 45;
   }
 });
