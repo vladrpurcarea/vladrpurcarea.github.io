@@ -2,6 +2,7 @@ let appWidth = 420;
 let appHeight = 600;
 let boardWidth = 5;
 let boardHeight = 15;
+let squareSize = 40;
 let Application = PIXI.Application,
   loader = PIXI.Loader.shared,
   resources = PIXI.Loader.shared.resources,
@@ -56,7 +57,7 @@ function gameLoop(delta) {
     pentomino.y += 1;
     update = true;
     if (board.collides(pentomino)) {
-      board.placePentomino(pentomino);
+      //board.placePentomino(pentomino);
       pentomino = queuedPentomino;
       queuedPentomino = new Pentomino(pickRandomType(), pickRandomColor());
     }
@@ -100,8 +101,8 @@ function renderBoard() {
   for (let i = 0; i < b.length; i++) {
     for (let j = 0; j < b[i].length; j++) {
       let block = new Sprite(colors[b[i][j]]);
-      block.width = 33;
-      block.height = 33;
+      block.width = squareSize;
+      block.height = squareSize;
       block.x = j * block.width;
       block.y = i * block.height;
       app.stage.addChild(block);
@@ -115,8 +116,8 @@ function renderPentomino(p) {
     for (let j = 0; j < p.shape[i].length; j++) {
       if (p.shape[i][j] != 0) {
         let block = new Sprite(colors[p.color]);
-        block.width = 33;
-        block.height = 33;
+        block.width = squareSize;
+        block.height = squareSize;
         block.x = (j + p.x) * block.width;
         block.y = (i + p.y) * block.height;
         app.stage.addChild(block);
