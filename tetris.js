@@ -35,24 +35,44 @@ function setup() {
 
   blocks = [];
 
+  //pentominos and board
+  pentomino = new Pentomino(pickRandomType(), pickRandomColor());
+  queuedPentomino = new Pentomino(pickRandomType(), pickRandomColor());
+  board = new Board(boardHeight, boardWidth);
+
   //keyboard listeners
   left = keyboard("ArrowLeft");
   up = keyboard("ArrowUp");
   right = keyboard("ArrowRight");
   down = keyboard("ArrowDown");
 
-  //pentominos
-  pentomino = new Pentomino(pickRandomType(), pickRandomColor());
-  queuedPentomino = new Pentomino(pickRandomType(), pickRandomColor());
+  left.press = () => {
+    pentomino.x -= 1;
+    if (board.collides(pentomino)) {
+      pentomino.x += 1;
+    }
+  };
+
+  right.press = () => {
+    pentomino.x -= 1;
+    if (board.collides(pentomino)) {
+      pentomino.x += 1;
+    }
+  };
+
+  up.press = () => {
+    pentomino.x -= 1;
+    if (board.collides(pentomino)) {
+      pentomino.x += 1;
+    }
+  };
 
   ticks = 0;
-  board = new Board(boardHeight, boardWidth);
   app.ticker.add(delta => gameLoop(delta));
 }
 
 function gameLoop(delta) {
   ++ticks;
-  let update = false;
   if (ticks == 45) {
     pentomino.y += 1;
     update = true;
@@ -65,35 +85,7 @@ function gameLoop(delta) {
     ticks = 0;
   }
 
-  if (left.isDown) {
-    pentomino.x -= 1;
-    if (board.collides(pentomino)) {
-      pentomino.x += 1;
-    } else {
-      update = true;
-    }
-  } else if (right.isDown) {
-    pentomino.X += 1;
-    if (board.collides(pentomino)) {
-      pentomino.x -= 1;
-    } else {
-      update = true;
-    }
-  } else if (up.isDown) {
-    pentomino.rotate();
-    if (board.collides(pentomino)) {
-      //hahahahahahahaha
-      pentomino.rotate();
-      pentomino.rotate();
-      pentomino.rotate();
-    } else {
-      update = true;
-    }
-  }
-
-  if (update) {
-    render();
-  }
+  render();
 }
 
 function renderBoard() {
