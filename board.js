@@ -59,10 +59,11 @@ class Board {
       }
     }
 
+    let _this = this;
     linesToClear.forEach(function(l) {
         for (let i = l; i > 0; i--) {
-            for (let j = 0; j < this.board[i].length; j++) {
-                this.board[i][j] = this.board[i-1][j];
+            for (let j = 0; j < _this.board[i].length; j++) {
+                _this.board[i][j] = _this.board[i-1][j];
             }
         }
     });
