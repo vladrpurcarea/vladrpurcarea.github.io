@@ -1,4 +1,4 @@
-import { keyboard } from 'keyboard'
+var keyboard = require('keyboard').keyboard;
 
 let Application = PIXI.Application,
     loader = PIXI.loader,
