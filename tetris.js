@@ -3,7 +3,7 @@ let appHeight = 600;
 let boardWidth = 5;
 let boardHeight = 15;
 let Application = PIXI.Application,
-  loader = PIXI.loader,
+  loader = PIXI.Loader.shared,
   resources = PIXI.loader.resources,
   Sprite = PIXI.Sprite;
 

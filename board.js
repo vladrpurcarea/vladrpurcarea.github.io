@@ -19,7 +19,7 @@ class Board {
   placePentomino(p) {
     for (let i = 0; i < p.shape.length; i++) {
       for (let j = 0; j < p.shape[i].length; j++) {
-        board[i + p.y][j + p.x] = p.shape[i][j];
+        this.board[i + p.y][j + p.x] = p.shape[i][j];
       }
     }
   }
