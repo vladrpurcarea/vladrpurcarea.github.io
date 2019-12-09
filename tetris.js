@@ -106,7 +106,7 @@ function renderPentomino(p) {
   for (let i = 0; i < p.shape.length; i++) {
     for (let j = 0; j < p.shape[i].length; j++) {
       if (p.shape[i][j] != 0) {
-        let block = new Sprite(p.color);
+        let block = new Sprite(colors[p.color]);
         block.width = 33;
         block.height = 33;
         block.x = (j + p.x) * block.width;
