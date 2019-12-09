@@ -67,7 +67,8 @@ function setup() {
 
 function gameLoop(delta) {
   ++ticks;
-  if (ticks == tickTime) {
+  if (ticks >= tickTime) {
+    ticks = 0;
     pentomino.y += 1;
     update = true;
     if (board.collides(pentomino)) {
@@ -82,8 +83,6 @@ function gameLoop(delta) {
       queuedPentomino.x = 7;
       queuedPentomino.y = 1;
     }
-  } else if (ticks == 60) {
-    ticks = 0;
   }
 
   if (update) {
