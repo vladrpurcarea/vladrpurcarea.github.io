@@ -86,17 +86,17 @@ function gameLoop(delta) {
 }
 
 function render() {
-    let board = board.board;
-    board[2][2] = 1;
+    let b = board.board;
+    b[2][2] = 1;
     for (let i = 0; i < blocks.length; i++) {
         blocks[i].visible = false;
         app.stage.removeChild(blocks[i]);
     }
     blocks = [];
-    for (let i = 0; i < board.length; i++) {
-        for (let j = 0; j < board[i].length; j++) {
+    for (let i = 0; i < b.length; i++) {
+        for (let j = 0; j < b[i].length; j++) {
             if (board[i][j] != 0) {
-                let block = new Sprite(colors[board[i][j]]);
+                let block = new Sprite(colors[b[i][j]]);
                 block.width = 33;
                 block.height = 33;
                 block.x = j * (block.width);
