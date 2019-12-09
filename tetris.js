@@ -18,10 +18,10 @@ loader
 let colors;
 
 function setup() {
-    let colors = [new Sprite(resources["assets/black.png"].texture,
-                  new Sprite(resources["assets/dark_blue.png"].texture,
-                  new Sprite(resources["assets/real_black.png"].texture,
-                  new Sprite(resources["assets/white.png"].texture];
+    let colors = [new Sprite(resources["assets/black.png"].texture),
+                  new Sprite(resources["assets/dark_blue.png"].texture),
+                  new Sprite(resources["assets/real_black.png"].texture),
+                  new Sprite(resources["assets/white.png"].texture)];
     
     app.ticker.add(delta => gameLoop(delta));
     app.stage.addChild(colors[0])
