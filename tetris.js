@@ -1,4 +1,4 @@
-import {keyboard} from './keyboard'
+import { keyboard } from './keyboard.js'
 
 let Application = PIXI.Application,
     loader = PIXI.loader,
