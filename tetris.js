@@ -29,6 +29,15 @@ loader
   .add("assets/white.png")
   .load(setup);
 
+function resize() {
+  renderer.view.style.position = "absolute";
+  renderer.view.style.left = ((window.innerWidth - renderer.width) >> 1) + "px";
+  renderer.view.style.top =
+    ((window.innerHeight - renderer.height) >> 1) + "px";
+}
+resize();
+window.addEventListener("resize", resize);
+
 let colors;
 let board;
 let ticks;
@@ -152,7 +161,7 @@ function render() {
 
 document.addEventListener("keydown", function(event) {
   if (event.keyCode == 37) {
-      ++actions;
+    ++actions;
     pentomino.x -= 1;
     if (board.collides(pentomino)) {
       pentomino.x += 1;
@@ -195,15 +204,16 @@ document.addEventListener("keyup", function(event) {
 });
 
 function postScore(s, a) {
-    db.collection("scores").add({
-        actions : a,
-        score: s,
-        date: Date.now()
+  db.collection("scores")
+    .add({
+      actions: a,
+      score: s,
+      date: Date.now()
     })
     .then(function(docRef) {
-        console.log("Document written with ID: ", docRef.id);
+      console.log("Document written with ID: ", docRef.id);
     })
     .catch(function(error) {
-        console.error("Error adding document: ", error);
+      console.error("Error adding document: ", error);
     });
 }
