@@ -46,9 +46,9 @@ class Board {
 
   clearLines() {
     let linesToClear = [];
-    for (let i = 0; i < this.board; i++) {
+    for (let i = 0; i < this.board.length; i++) {
       let full = true;
-      for (let j = 0; j < this.board[i]; j++) {
+      for (let j = 0; j < this.board[i].length; j++) {
         if (this.board[i][j] == 0) {
           full = false;
           break;

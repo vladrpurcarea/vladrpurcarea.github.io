@@ -164,7 +164,7 @@ document.addEventListener("keydown", function(event) {
       update = true;
     }
   } else if (event.keyCode == 40) {
-    tickTime = 15;
+    tickTime = 10;
   }
 });
 
