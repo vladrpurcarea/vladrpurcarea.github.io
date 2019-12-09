@@ -15,7 +15,8 @@ let Application = PIXI.Application,
   loader = PIXI.Loader.shared,
   resources = PIXI.Loader.shared.resources,
   Sprite = PIXI.Sprite,
-  Text = PIXI.Text;
+  Text = PIXI.Text,
+  TextStyle = PIXI.TextStyle;
 
 let app = new Application({ width: appWidth, height: appHeight });
 document.body.appendChild(app.view);
