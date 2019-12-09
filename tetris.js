@@ -16,7 +16,7 @@ loader
 let colors;
 
 function setup() {
-    let colors = [new Sprite(resources["assets/black.png"].texture),
+    colors = [new Sprite(resources["assets/black.png"].texture),
                   new Sprite(resources["assets/dark_blue.png"].texture),
                   new Sprite(resources["assets/real_black.png"].texture),
                   new Sprite(resources["assets/white.png"].texture)];
