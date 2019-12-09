@@ -14,6 +14,7 @@ class Board {
         this.board[i][j] = 0;
       }
     }
+    return;
   }
 
   placePentomino(p) {
@@ -22,6 +23,7 @@ class Board {
         this.board[i + p.y][j + p.x] = p.shape[i][j];
       }
     }
+    return;
   }
 
   collides(p) {

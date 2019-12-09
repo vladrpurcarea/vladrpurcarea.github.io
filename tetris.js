@@ -36,10 +36,10 @@ function setup() {
   blocks = [];
 
   //keyboard listeners
-  (left = keyboard("ArrowLeft")),
-    (up = keyboard("ArrowUp")),
-    (right = keyboard("ArrowRight")),
-    (down = keyboard("ArrowDown"));
+  left = keyboard("ArrowLeft");
+  up = keyboard("ArrowUp");
+  right = keyboard("ArrowRight");
+  down = keyboard("ArrowDown");
 
   //pentominos
   pentomino = new Pentomino(pickRandomType(), pickRandomColor());
