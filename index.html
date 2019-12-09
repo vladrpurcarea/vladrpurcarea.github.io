@@ -8,14 +8,10 @@
   <script src="pentomino.js"></script>
   <script src="board.js"></script>
   <body>
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.5.2/firebase-app.js"></script>
-
-    <!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.5.2/firebase-firestore.js"></script>
 
     <script>
-      // Your web app's Firebase configuration
       var firebaseConfig = {
         apiKey: "AIzaSyBFUpIkzs1eNqsLOpbVZyWhCFZ_hY6Wm5g",
         authDomain: "pentominoes-group08.firebaseapp.com",
@@ -25,7 +21,6 @@
         messagingSenderId: "87908145596",
         appId: "1:87908145596:web:cb8dbdcc0a380def8cf3b9"
       };
-      // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
     </script>
     <script src="tetris.js" type="module"></script>

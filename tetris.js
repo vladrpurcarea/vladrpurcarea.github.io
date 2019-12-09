@@ -5,6 +5,8 @@ let boardHeight = 15;
 let squareSize = 40;
 let tickTime = 45;
 
+var db = firebase.firestore();
+
 let Application = PIXI.Application,
   loader = PIXI.Loader.shared,
   resources = PIXI.Loader.shared.resources,
@@ -36,6 +38,7 @@ let blocks;
 let update;
 let score;
 let scoreText;
+let actions;
 
 function setup() {
   // set up blocks
@@ -61,6 +64,8 @@ function setup() {
   app.stage.addChild(scoreText);
   scoreText.position.set(300, 420);
 
+  actions = 0;
+
   ticks = 0;
   app.ticker.add(delta => gameLoop(delta));
 }
@@ -79,6 +84,18 @@ function gameLoop(delta) {
       pentomino = queuedPentomino;
       pentomino.x = 0;
       pentomino.y = 0;
+
+      if (board.collides(pentomino)) {
+        //game over
+
+        postScore(score, actions);
+
+        score = 0;
+        actions = 0;
+        scoreText.text = score;
+        board.clearBoard();
+      }
+
       queuedPentomino = new Pentomino(pickRandomType(), pickRandomColor());
       queuedPentomino.x = 7;
       queuedPentomino.y = 1;
@@ -135,6 +152,7 @@ function render() {
 
 document.addEventListener("keydown", function(event) {
   if (event.keyCode == 37) {
+      ++actions;
     pentomino.x -= 1;
     if (board.collides(pentomino)) {
       pentomino.x += 1;
@@ -142,6 +160,7 @@ document.addEventListener("keydown", function(event) {
       update = true;
     }
   } else if (event.keyCode == 38) {
+    ++actions;
     pentomino.rotate();
     let origX = pentomino.x;
     while (pentomino.x >= 0) {
@@ -157,6 +176,7 @@ document.addEventListener("keydown", function(event) {
     pentomino.rotate();
     pentomino.rotate();
   } else if (event.keyCode == 39) {
+    ++actions;
     pentomino.x += 1;
     if (board.collides(pentomino)) {
       pentomino.x -= 1;
@@ -173,3 +193,17 @@ document.addEventListener("keyup", function(event) {
     tickTime = 45;
   }
 });
+
+function postScore(s, a) {
+    db.collection("scores").add({
+        actions : a,
+        score: s,
+        date: Date.now()
+    })
+    .then(function(docRef) {
+        console.log("Document written with ID: ", docRef.id);
+    })
+    .catch(function(error) {
+        console.error("Error adding document: ", error);
+    });
+}
