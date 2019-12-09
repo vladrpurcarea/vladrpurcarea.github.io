@@ -51,12 +51,8 @@ function gameLoop(delta) {
     pentomino.y += 1;
     update = true;
     if (board.collides(pentomino)) {
-      let shape = pentomino.shape;
-      for (let i = 0; i < shape.length; i++) {
-        for (let j = 0; j < shape[i].length; j++) {
-          board.board[i + pentomino.y][j + pentomino.x] = shape[i][j];
-        }
-      }
+      pentomino.y -= 1;
+      board.placePentomino(pentomino);
       pentomino = queuedPentomino;
       queuedPentomino = new Pentomino(pickRandomType(), pickRandomColor());
     }
