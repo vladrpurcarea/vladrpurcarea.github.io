@@ -12,7 +12,8 @@ let Application = PIXI.Application,
   resources = PIXI.Loader.shared.resources,
   Sprite = PIXI.Sprite,
   Text = PIXI.Text,
-  TextStyle = PIXI.TextStyle;
+  TextStyle = PIXI.TextStyle,
+  renderer = PIXI.Renderer;
 
 let style = new TextStyle({
   fontSize: 20,
