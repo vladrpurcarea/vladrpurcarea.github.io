@@ -33,7 +33,7 @@ class Board {
         let xPos = j + p.x;
         let yPos = i + p.y;
 
-        if (xPos >= this.w || yPos >= this.h || this.board[xPos][yPos] != 0) {
+        if (xPos >= this.w || yPos >= this.h || this.board[yPos][xPos] != 0) {
           return true;
         }
       }

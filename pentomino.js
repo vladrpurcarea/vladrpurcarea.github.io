@@ -18,7 +18,7 @@ function pickRandomType() {
 }
 
 function pickRandomColor() {
-  return Math.floor(Math.floor(Math.random() * 4));
+  return Math.floor(Math.floor(Math.random() * 3) + 1);
 }
 
 class Pentomino {

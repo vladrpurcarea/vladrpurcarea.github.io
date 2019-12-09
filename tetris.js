@@ -10,9 +10,9 @@ let Application = PIXI.Application,
 let app = new Application({ width: appWidth, height: appHeight });
 document.body.appendChild(app.view);
 loader
+  .add("assets/real_black.png")
   .add("assets/black.png")
   .add("assets/dark_blue.png")
-  .add("assets/real_black.png")
   .add("assets/white.png")
   .load(setup);
 
@@ -26,9 +26,9 @@ let blocks;
 function setup() {
   // set up blocks
   colors = [
+    resources["assets/real_black.png"].texture,
     resources["assets/black.png"].texture,
     resources["assets/dark_blue.png"].texture,
-    resources["assets/real_black.png"].texture,
     resources["assets/white.png"].texture
   ];
 
@@ -99,15 +99,13 @@ function renderBoard() {
   let b = board.board;
   for (let i = 0; i < b.length; i++) {
     for (let j = 0; j < b[i].length; j++) {
-      if (b[i][j] != 0) {
-        let block = new Sprite(colors[b[i][j]]);
-        block.width = 33;
-        block.height = 33;
-        block.x = j * block.width;
-        block.y = i * block.height;
-        app.stage.addChild(block);
-        blocks.push(block);
-      }
+      let block = new Sprite(colors[b[i][j]]);
+      block.width = 33;
+      block.height = 33;
+      block.x = j * block.width;
+      block.y = i * block.height;
+      app.stage.addChild(block);
+      blocks.push(block);
     }
   }
 }
