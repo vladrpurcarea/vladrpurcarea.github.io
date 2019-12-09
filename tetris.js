@@ -23,6 +23,7 @@ let ticks;
 let left, up, right, down;
 let pentomino, queuedPentomino;
 let blocks;
+let update;
 
 function setup() {
   // set up blocks
@@ -50,6 +51,8 @@ function setup() {
     pentomino.x -= 1;
     if (board.collides(pentomino)) {
       pentomino.x += 1;
+    } else {
+      update = true;
     }
   };
 
@@ -57,6 +60,8 @@ function setup() {
     pentomino.x -= 1;
     if (board.collides(pentomino)) {
       pentomino.x += 1;
+    } else {
+      update = true;
     }
   };
 
@@ -64,6 +69,8 @@ function setup() {
     pentomino.x -= 1;
     if (board.collides(pentomino)) {
       pentomino.x += 1;
+    } else {
+      update = true;
     }
   };
 
@@ -85,7 +92,9 @@ function gameLoop(delta) {
     ticks = 0;
   }
 
-  render();
+  if (update) {
+    render();
+  }
 }
 
 function renderBoard() {
@@ -120,6 +129,7 @@ function renderPentomino(p) {
 }
 
 function render() {
+  update = false;
   for (let i = 0; i < blocks.length; i++) {
     blocks[i].visible = false;
     app.stage.removeChild(blocks[i]);
