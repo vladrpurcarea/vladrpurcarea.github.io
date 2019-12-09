@@ -41,38 +41,38 @@ function setup() {
   queuedPentomino = new Pentomino(pickRandomType(), pickRandomColor());
   board = new Board(boardHeight, boardWidth);
 
-  //keyboard listeners
-  left = keyboard("ArrowLeft");
-  up = keyboard("ArrowUp");
-  right = keyboard("ArrowRight");
-  down = keyboard("ArrowDown");
+//   //keyboard listeners
+//   left = keyboard("ArrowLeft");
+//   up = keyboard("ArrowUp");
+//   right = keyboard("ArrowRight");
+//   down = keyboard("ArrowDown");
 
-  left.press = () => {
-    pentomino.x -= 1;
-    if (board.collides(pentomino)) {
-      pentomino.x += 1;
-    } else {
-      update = true;
-    }
-  };
+//   left.press = () => {
+//     pentomino.x -= 1;
+//     if (board.collides(pentomino)) {
+//       pentomino.x += 1;
+//     } else {
+//       update = true;
+//     }
+//   };
 
-  right.press = () => {
-    pentomino.x -= 1;
-    if (board.collides(pentomino)) {
-      pentomino.x += 1;
-    } else {
-      update = true;
-    }
-  };
+//   right.press = () => {
+//     pentomino.x -= 1;
+//     if (board.collides(pentomino)) {
+//       pentomino.x += 1;
+//     } else {
+//       update = true;
+//     }
+//   };
 
-  up.press = () => {
-    pentomino.x -= 1;
-    if (board.collides(pentomino)) {
-      pentomino.x += 1;
-    } else {
-      update = true;
-    }
-  };
+//   up.press = () => {
+//     pentomino.x -= 1;
+//     if (board.collides(pentomino)) {
+//       pentomino.x += 1;
+//     } else {
+//       update = true;
+//     }
+//   };
 
   ticks = 0;
   app.ticker.add(delta => gameLoop(delta));
@@ -138,3 +138,12 @@ function render() {
   renderBoard();
   renderPentomino(pentomino);
 }
+
+document.addEventListener('keydown', function(event) {
+    if(event.keyCode == 37) {
+        alert('Left was pressed');
+    }
+    else if(event.keyCode == 39) {
+        alert('Right was pressed');
+    }
+});
