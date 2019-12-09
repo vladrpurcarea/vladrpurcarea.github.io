@@ -19,7 +19,7 @@ class Board {
   placePentomino(p) {
     for (let i = 0; i < p.shape.length; i++) {
       for (let j = 0; j < p.shape[i].length; j++) {
-        if (p.shaope[i][j] == 0) {
+        if (p.shape[i][j] == 0) {
           continue;
         }
         this.board[i + p.y][j + p.x] = p.color;
