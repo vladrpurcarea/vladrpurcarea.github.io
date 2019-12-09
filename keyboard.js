@@ -1,4 +1,4 @@
-function keyboard(value) {
+export function keyboard(value) {
   let key = {};
   key.value = value;
   key.isDown = false;
@@ -45,4 +45,3 @@ function keyboard(value) {
   return key;
 }
 
-export default keyboard;
