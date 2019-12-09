@@ -85,24 +85,46 @@ function gameLoop(delta) {
   render();
 }
 
+function renderBoard() {
+  let b = board.board;
+  for (let i = 0; i < b.length; i++) {
+    for (let j = 0; j < b[i].length; j++) {
+      if (b[i][j] != 0) {
+        let block = new Sprite(colors[b[i][j]]);
+        block.width = 33;
+        block.height = 33;
+        block.x = j * block.width;
+        block.y = i * block.height;
+        app.stage.addChild(block);
+        blocks.push(block);
+      }
+    }
+  }
+}
+
+function renderPentomino(p) {
+  for (let i = 0; i < p.shape.length; i++) {
+    for (let j = 0; j < p.shape[i].length; j++) {
+      if (b[i][j] != 0) {
+        let block = new Sprite(p.color);
+        block.width = 33;
+        block.height = 33;
+        block.x = (j + p.x) * block.width;
+        block.y = (i + p.y) * block.height;
+        app.stage.addChild(block);
+        blocks.push(block);
+      }
+    }
+  }
+}
+
 function render() {
-    let b = board.board;
-    for (let i = 0; i < blocks.length; i++) {
-        blocks[i].visible = false;
-        app.stage.removeChild(blocks[i]);
-    }
-    blocks = [];
-    for (let i = 0; i < b.length; i++) {
-        for (let j = 0; j < b[i].length; j++) {
-            if (b[i][j] != 0) {
-                let block = new Sprite(colors[b[i][j]]);
-                block.width = 33;
-                block.height = 33;
-                block.x = j * (block.width);
-                block.y = i * (block.height);
-                app.stage.addChild(block);
-                blocks.push(block);
-            }
-        }
-    }
+  for (let i = 0; i < blocks.length; i++) {
+    blocks[i].visible = false;
+    app.stage.removeChild(blocks[i]);
+  }
+  blocks = [];
+  renderBoard();
+  renderPentomino(pentomino);
+  renderPentomino(queuedPentomino);
 }
