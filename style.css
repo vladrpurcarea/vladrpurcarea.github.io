@@ -1,0 +1,24 @@
+@font-face{
+    font-family: JosefinSans300Own;
+    src: url(assets/JosefinSans-Regular.ttf);
+}
+
+body {
+    font-family: "JosefinSans300Own", Arial, Tahoma, sans-serif;
+}
+
+a {
+    color: #e26c6e;
+    text-decoration: none;
+}
+
+#logo {
+    margin: 0 auto;
+    display: block;
+}
+
+#logo-container{
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 20px;
+}

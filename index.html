@@ -1,35 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" />
-    <title>Pentominos</title>
-    <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Carmen Bergmann</title>
   </head>
-  <script src="pixi/pixi.min.js"></script>
-  <script src="pentomino.js"></script>
-  <script src="board.js"></script>
   <body>
-    <script src="https://www.gstatic.com/firebasejs/7.5.2/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.5.2/firebase-firestore.js"></script>
-
-    <script>
-      var firebaseConfig = {
-        apiKey: "AIzaSyBFUpIkzs1eNqsLOpbVZyWhCFZ_hY6Wm5g",
-        authDomain: "pentominoes-group08.firebaseapp.com",
-        databaseURL: "https://pentominoes-group08.firebaseio.com",
-        projectId: "pentominoes-group08",
-        storageBucket: "pentominoes-group08.appspot.com",
-        messagingSenderId: "87908145596",
-        appId: "1:87908145596:web:cb8dbdcc0a380def8cf3b9"
-      };
-      firebase.initializeApp(firebaseConfig);
-    </script>
-    <div id="outer">
-      <div id="inner">
-        <script src="tetris.js" type="module"></script>
-      </div>
+    <div id="logo-container">
+      <img id="logo" src="./assets/logo.png">
     </div>
-    <br />
-    <h3>Click inside game to play<br />Up is rotate, Down is speed up.</h3>
+    <div id="example"></div>
+
+    <!-- Dependencies -->
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <!-- Main -->
+
+    <script src="./dist/main.js"></script>
   </body>
 </html>
